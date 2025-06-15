@@ -1,0 +1,171 @@
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f7fa;
+}
+
+/* 🌐 Navbar (Flexbox) */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #007BFF;
+  padding: 1rem 2rem;
+  color: white;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.2rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* 🧱 Main Grid Layout */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  padding: 2rem;
+}
+
+.grid-item {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ✉️ Contact Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 12px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+input,
+textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  resize: vertical;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px;
+  border: none;
+  background-color: #007BFF;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* 📱 Responsive Styles */
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+}
+
+/* ✅ To-Do List Styles */
+.todo-section {
+  margin: 40px auto;
+  max-width: 600px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.todo-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#taskInput {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.todo-container button {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.todo-container button:hover {
+  background-color: #218838;
+}
+
+#taskList {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#taskList li {
+  background: #f8f9fa;
+  margin-top: 10px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#taskList li.completed {
+  text-decoration: line-through;
+  color: gray;
+}

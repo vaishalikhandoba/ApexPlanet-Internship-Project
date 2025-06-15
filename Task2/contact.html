@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task 2</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Navigation Bar (Flexbox) -->
+  <nav class="navbar">
+    <div class="logo">My Website...</div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+  <!-- Main Layout (CSS Grid) -->
+  <main class="grid-container">
+    <!-- Grid Box 1 - Contact Form -->
+    <div class="grid-item">
+      <h2>Contact Us</h2>
+      <form id="contactForm">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required />
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required />
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+    <!-- Grid Box 2 -->
+    <div class="grid-item">
+        <section class="todo-section">
+            <h2>📝 My To-Do List</h2>
+            <div class="todo-container">
+                <input type="text" id="taskInput" placeholder="Enter a task..." />
+                <button onclick="addTask()">Add Task</button>
+                <ul id="taskList"></ul>
+            </div>
+        </section>
+    </div>
+    <!-- Grid box 3-->
+     <div class="grid-item">Welcome to My Responsive Webpage
+        <textarea id="message" name="message" rows="15" required></textarea>
+     </div>
+
+</main>
+<script>
+document.getElementById("contactForm").addEventListener("submit", function (e) {
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    let errorMessage = "";
+    if (name === "") errorMessage += "Name is required.\n";
+    if (email === "") errorMessage += "Email is required.\n";
+    else if (!emailPattern.test(email)) errorMessage += "Invalid email format.\n";
+    if (message === "") errorMessage += "Message is required.\n";
+    if (errorMessage !== "") {
+      alert(errorMessage);
+      e.preventDefault();
+    }
+  });
+  function addTask() {
+    const taskInput = document.getElementById("taskInput");
+    const taskText = taskInput.value.trim();
+    if (taskText === "") {
+      alert("Please enter a task.");
+      return;
+    }
+    const taskList = document.getElementById("taskList");
+    const li = document.createElement("li");
+    const span = document.createElement("span");
+    span.textContent = taskText;
+    span.style.cursor = "pointer";
+    span.onclick = () => {
+      li.classList.toggle("completed");
+    };
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "❌";
+    deleteBtn.style.border = "none";
+    deleteBtn.style.background = "transparent";
+    deleteBtn.style.fontSize = "18px";
+    deleteBtn.style.cursor = "pointer";
+    deleteBtn.onclick = () => {
+      li.remove();
+    };
+    li.appendChild(span);
+    li.appendChild(deleteBtn);
+    taskList.appendChild(li);
+    taskInput.value = ""; 
+  }
+</script>
+</body>
+</html>
